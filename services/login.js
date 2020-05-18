@@ -1,4 +1,3 @@
-const express = require('express');
 const mysql = require('../datastore/mysql');
 
 function loginService(data, callback){

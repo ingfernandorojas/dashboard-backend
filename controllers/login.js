@@ -20,7 +20,7 @@ function login(req, res){
                 role: data[0].role,
                 createdAt: data[0].createdAt,
                 updatedAt: data[0].updatedAt
-            }, "token", { expiresIn: '1h' });
+            }, secret, { expiresIn: '1h' });
 
 
            res.status(200).json({

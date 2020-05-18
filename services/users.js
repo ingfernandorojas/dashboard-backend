@@ -30,7 +30,23 @@ function registerService(data, callback){
 
     });
 
+}
 
+function getAllService(data, callback){
+
+    var sql = "SELECT * FROM usuarios";
+
+
+    mysql.query(sql, 
+        
+        function (error, results) {
+
+        if (error) throw error;
+        
+        return callback(results);
+        
+
+    });
 
 }
 
@@ -68,5 +84,6 @@ function getDateTime() {
 }
 
 module.exports = {
-    registerService
+    registerService,
+    getAllService
 }

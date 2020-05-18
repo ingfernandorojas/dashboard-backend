@@ -25,8 +25,7 @@ function register(req, res){
                     mensaje: "Error al registrar usuario"
                 });
             }else{
-    
-    
+
                res.status(200).json({
                     mensaje: "Usuario registrado correctamente"
                }); 
@@ -37,6 +36,17 @@ function register(req, res){
 
 }
 
+function getAll(req,res){
+
+    service.getAllService(req, function(data){
+
+        res.json({data: data})
+
+    });
+
+}
+
 module.exports = {
-    register
+    register,
+    getAll
 }

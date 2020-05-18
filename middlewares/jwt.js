@@ -3,13 +3,16 @@ const secret = require('../config/secret');
 
 function verifyJWT(req, res, next){
 
-    jwt.verify(req.headers.token, "token", function(err, decoded) {
+    jwt.verify(req.headers.token, secret, function(err, decoded) {
+        
         if(err){
             res.status(401).json({
-                message: err.message
-            })
+                message: err
+            });
+            
             return false
         }
+        
         next();
     });
 
