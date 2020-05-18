@@ -7,6 +7,8 @@ const roles = require('../config/roles');
 
 
 router.post('/register', verifyJWT.verifyJWT, verifyRole.role(roles.admin), users.register);
+router.put('/admin/updateUser', verifyJWT.verifyJWT, verifyRole.role(roles.admin), users.update);
+router.delete('/admin/deleteUser', verifyJWT.verifyJWT, verifyRole.role(roles.admin), users.deleteUser);
 router.get('/getAll', verifyJWT.verifyJWT, verifyRole.role(roles.admin), users.getAll);
 
 

@@ -32,6 +32,57 @@ function registerService(data, callback){
 
 }
 
+function updateService(data, callback){
+
+    var sql = "UPDATE usuarios SET nombre = ?, apellido = ?, email = ?, password = ?, role = ?, updatedAt = ?, active = ? WHERE username = ?";
+
+
+    mysql.query(sql, 
+
+        [
+            data.body.nombre,
+            data.body.apellido,
+            data.body.email,
+            data.body.password,
+            data.body.role,
+            getDateTime(),
+            data.body.active,
+            data.body.username
+        ], 
+        
+        function (error, results) {
+
+        if (error) throw error;
+        
+        return callback(results);
+        
+
+    });
+
+}
+
+function deleteService(data, callback){
+
+    var sql = "DELETE FROM usuarios WHERE username = ?";
+
+
+    mysql.query(sql, 
+
+        [
+            data.body.username
+        ], 
+        
+        function (error, results) {
+
+        if (error) throw error;
+        
+        return callback(results);
+        
+
+    });
+
+}
+
 function getAllService(data, callback){
 
     var sql = "SELECT * FROM usuarios";
@@ -85,5 +136,7 @@ function getDateTime() {
 
 module.exports = {
     registerService,
+    updateService,
+    deleteService,
     getAllService
 }
