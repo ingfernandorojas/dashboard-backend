@@ -69,7 +69,7 @@ function deleteService(data, callback){
     mysql.query(sql, 
 
         [
-            data.body.username
+            data.params.username
         ], 
         
         function (error, results) {
@@ -85,7 +85,7 @@ function deleteService(data, callback){
 
 function getAllService(data, callback){
 
-    var sql = "SELECT * FROM usuarios";
+    var sql = "SELECT nombre,apellido,email,username,role FROM usuarios";
 
 
     mysql.query(sql, 

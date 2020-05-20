@@ -75,16 +75,6 @@ function update(req, res){
 
 function deleteUser(req, res){
 
-    if(
-        req.body.username == null 
-
-    ){
-
-        res.status(400).json({
-            mensaje: "Faltan campos"
-        });
-
-    }else{
         service.deleteService(req, function(data){
         
             if(data.affectedRows != 1){
@@ -99,7 +89,7 @@ function deleteUser(req, res){
             }
            
         });
-    }
+    
 
 }
 
