@@ -46,7 +46,7 @@ function updateService(data, callback){
             data.body.password,
             data.body.role,
             getDateTime(),
-            data.body.active,
+            1,
             data.body.username
         ], 
         

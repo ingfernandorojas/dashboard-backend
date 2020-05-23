@@ -45,7 +45,6 @@ function update(req, res){
         req.body.email == null ||
         req.body.password == null ||
         req.body.role == null ||
-        req.body.active == null ||
         req.body.username == null 
 
     ){
