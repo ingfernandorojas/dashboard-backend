@@ -83,21 +83,52 @@ function deleteService(data, callback){
 
 }
 
+// La llamada debe realizarse de la siguiente manera
+// Si queremos todos los datos => /user/admin/getAllUsers/nosearch
+// Si queremos buscar => /user/admin/getAllUsers/terminoDeBusqueda
+
 function getAllService(data, callback){
 
-    var sql = "SELECT nombre,apellido,email,username,role FROM usuarios";
+    if(data.params.search == "nosearch"){
+
+        var sql = "SELECT nombre,apellido,email,username,role FROM usuarios";
 
 
-    mysql.query(sql, 
-        
-        function (error, results) {
+        mysql.query(sql, 
+            
+            function (error, results) {
 
-        if (error) throw error;
-        
-        return callback(results);
-        
+            if (error) throw error;
+            
+            return callback(results);
+            
 
-    });
+        });
+
+    }else{
+
+        var sql = "SELECT nombre,apellido,email,username,role FROM usuarios WHERE nombre LIKE ? OR apellido LIKE ? OR email LIKE ? OR role LIKE ?";
+
+
+        mysql.query(sql, 
+            [
+                '%'+data.params.search+'%',
+                '%'+data.params.search+'%',
+                '%'+data.params.search+'%',
+                '%'+data.params.search+'%'
+            ],
+            function (error, results) {
+
+            if (error) throw error;
+            
+            return callback(results);
+            
+
+        });
+
+    }
+
+    
 
 }
 

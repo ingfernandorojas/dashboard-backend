@@ -9,7 +9,7 @@ const roles = require('../config/roles');
 router.post('/admin/registerUser', verifyJWT.verifyJWT, verifyRole.role(roles.admin), users.register);
 router.put('/admin/updateUser', verifyJWT.verifyJWT, verifyRole.role(roles.admin), users.update);
 router.delete('/admin/deleteUser/:username', verifyJWT.verifyJWT, verifyRole.role(roles.admin), users.deleteUser);
-router.get('/admin/getAllUsers', verifyJWT.verifyJWT, verifyRole.role(roles.admin), users.getAll);
+router.get('/admin/getAllUsers/:search', verifyJWT.verifyJWT, verifyRole.role(roles.admin), users.getAll);
 
 
 module.exports = router;

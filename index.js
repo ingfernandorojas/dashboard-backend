@@ -19,6 +19,7 @@ app.use(body.json());
 app.use('/', require('./routes/index'));
 app.use('/user', require('./routes/login'));
 app.use('/user', require('./routes/users'));
+app.use('/product', require('./routes/products'));
 
 app.listen(3000, ()=> {
     console.log('Express corriendo en el puerto 3000');
