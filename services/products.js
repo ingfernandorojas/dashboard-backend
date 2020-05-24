@@ -119,6 +119,25 @@ function getAllService(data, callback){
 
 }
 
+
+function getOneService(data, callback){
+
+		var sql = "SELECT * FROM productos WHERE idproducto = ?";
+		mysql.query(sql, 
+        [
+            data.params.idproducto
+        ],
+        function (error, results) {
+
+        if (error) throw error;
+        
+        return callback(results);
+        
+
+    	});
+
+}
+
 function getDateTime() {
 
     var date = new Date();
@@ -148,5 +167,6 @@ module.exports = {
     registerService,
     updateService,
     deleteService,
-    getAllService
+    getAllService,
+    getOneService
 }

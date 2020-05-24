@@ -101,9 +101,25 @@ function getAll(req,res){
 
 }
 
+function getOne(req,res){
+
+
+    service.getOneService(req, function(data){
+
+        if(data.length > 0){
+            res.json({data: data})
+        }else{
+            res.status(404).json({mensaje:"Producto no encontrado"})
+        }
+    });
+    
+
+}
+
 module.exports = {
     register,
     update,
     deleteUser,
-    getAll
+    getAll,
+    getOne
 }
