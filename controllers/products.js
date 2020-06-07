@@ -105,12 +105,7 @@ function getOne(req,res){
 
 
     service.getOneService(req, function(data){
-
-        if(data.length > 0){
-            res.json({data: data})
-        }else{
-            res.status(404).json({mensaje:"Producto no encontrado"})
-        }
+        res.json({data})
     });
     
 

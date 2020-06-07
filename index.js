@@ -20,6 +20,7 @@ app.use('/', require('./routes/index'));
 app.use('/user', require('./routes/login'));
 app.use('/user', require('./routes/users'));
 app.use('/product', require('./routes/products'));
+//app.use('/print', require('./routes/print'));
 
 app.listen(3000, ()=> {
     console.log('Express corriendo en el puerto 3000');
